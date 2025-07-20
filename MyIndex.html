@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="سيرة حسن صباح المطيري الذاتية - ماجستير هندسة معلومات، خبير في الذكاء الاصطناعي وتطوير البرمجيات">
+  <title>حسن صباح المطيري | سيرة ذاتية</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+   <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- شريط التنقل -->
+  <nav class="sticky-nav">
+    <div class="nav-links">
+      <a href="#about" class="active" data-i18n="about">نبذة</a>
+      <a href="#skills" data-i18n="skills">المهارات</a>
+      <a href="#experience" data-i18n="experience">الخبرات</a>
+      <a href="#projects" data-i18n="projects">المشاريع</a>
+      <a href="#research" data-i18n="research">الأبحاث</a>
+      <a href="#certificates" data-i18n="certificates">الشهادات</a>
+      <a href="#contact" data-i18n="contact">التواصل</a>
+    </div>
+    <div class="lang-switch">
+      <button id="btn-ar" class="active" onclick="setLanguage('ar')">العربية</button>
+      <button id="btn-en" onclick="setLanguage('en')">English</button>
+    </div>
+  </nav>
+
+  <header>
+    <h1 id="name"></h1>
+    <p id="subtitle">ماجستير هندسة معلومات </p>
+  </header>
+
+  <div class="container" id="content">
+    <img src="Photo.jpg" alt="صورة شخصية" class="profile-img" loading="lazy">
+
+    <!-- قسم النبذة -->
+    <section id="about" class="section">
+      <h2 id="about-title">نبذة عني</h2>
+      <p id="about-text">
+        باحث عراقي من مواليد 1996، حاصل على شهادة الماجستير في هندسة المعلومات لعام 2024، والبكالوريوس في تكنولوجيا المعلومات لعام 2018. لدي خبرات واسعة في تطوير البرمجيات، الذكاء الاصطناعي، وتحليل البيانات. قمت بنشر بحوث علمية ومراجع علمي لمجلة Soft Computing - Springer. أحمل عدة شهادات دولية، منها شهادة Google في الأمن السيبراني و TOT، وشهادة مدرب ICDL.
+      </p>
+      <button class="btn btn-download" onclick="downloadCV()">
+        <i class="fas fa-download"></i> تحميل السيرة الذاتية
+      </button>
+    </section>
+
+    <!-- قسم المهارات -->
+    <section id="skills" class="section">
+      <h2 id="skills-title">المهارات</h2>
+      <div class="skills-container" id="skills-list"></div>
+    </section>
+
+    <!-- قسم الخبرات -->
+    <section id="experience" class="section">
+      <h2 id="experience-title">الخبرات العملية</h2>
+      <div class="timeline" id="experience-list"></div>
+    </section>
+
+    <!-- قسم الهشاغات -->
+    <section class="section">
+      <h2 id="hashtags-title">#هاشتاغات</h2>
+      <div id="hashtags-container"></div>
+    </section>
+
+    <!-- قسم الأبحاث -->
+    <section id="research" class="section">
+      <h2 id="research-title">الأبحاث والمنشورات</h2>
+      <div class="research-container" id="research-list"></div>
+    </section>
+
+    <!-- قسم الشهادات -->
+    <section id="certificates" class="section">
+      <h2 id="certificates-title">الشهادات</h2>
+      <div class="certificate-gallery" id="certificates-container"></div>
+    </section>
+
+    <!-- قسم المشاريع -->
+    <section id="projects" class="section">
+      <h2 id="projects-title">أهم المشاريع</h2>
+      <div class="projects-grid" id="projects-list"></div>
+    </section>
+
+    <!-- قسم التواصل -->
+    <section id="contact" class="section">
+      <h2 id="contact-title">للتواصل</h2>
+      
+      <div class="contact-info">
+        <div class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <h3>البريد الإلكتروني</h3>
+          <p>hassan.sa860@gmail.com</p>
+        </div>
+        
+        <div class="contact-card">
+          <i class="fas fa-phone"></i>
+          <h3>الهاتف</h3>
+          <p>009647813838103</p>
+        </div>
+        
+        <div class="contact-card">
+          <i class="fas fa-globe"></i>
+          <h3>روابط</h3>
+          <p>
+            <a href="https://orcid.org/0009-0006-8671-008X" target="_blank">ORCID</a> | 
+            <a href="https://www.linkedin.com/in/hasan-sabah-al-muttairi-292575109" target="_blank">LinkedIn</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>أرسل رسالة</h3>
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">الاسم</label>
+            <input type="text" id="name" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">البريد الإلكتروني</label>
+            <input type="email" id="email" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">الرسالة</label>
+            <textarea id="message" class="form-control" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-block">إرسال الرسالة</button>
+        </form>
+      </div>
+
+      <div style="text-align: center; margin-top: 20px;">
+        <img src="ORCID.png" alt="QR Code" style="max-width:150px;" loading="lazy">
+      </div>
+    </section>
+  </div>
+
+  <!-- مودال لعرض الشهادات -->
+  <div id="pdf-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <embed id="pdf-viewer" class="pdf-viewer" src="" type="application/pdf">
+    </div>
+  </div>
+
+  <script>
+    const translations = {
+      ar: {
+        nav: {
+          about: "نبذة",
+          skills: "المهارات",
+          experience: "الخبرات",
+          projects: "المشاريع",
+          research: "الأبحاث",
+          certificates: "الشهادات",
+          contact: "التواصل"
+        },
+        name: "حسن صباح المطيري",
+        subtitle: "ماجستير هندسة معلومات",
+        aboutTitle: "نبذة عني",
+        aboutText: "باحث عراقي من مواليد 1996، حاصل على شهادة الماجستير في هندسة المعلومات لعام 2024، والبكالوريوس في تكنولوجيا المعلومات لعام 2018. لدي خبرات واسعة في تطوير البرمجيات، الذكاء الاصطناعي، وتحليل البيانات. قمت بنشر بحوث علمية ومراجع علمي لمجلة Soft Computing - Springer. أحمل عدة شهادات دولية، منها شهادة Google في الأمن السيبراني و TOT، وشهادة مدرب ICDL.",
+        skillsTitle: "المهارات",
+        skills: [
+          { name: "قواعد البيانات (SQLServer, NoSQL)", level: 90 },
+          { name: "الذكاء الاصطناعي وتعلم الآلة", level: 85 },
+          { name: "تطوير الويب (JavaScript, PHP)", level: 80 },
+          { name: "تحليل البيانات", level: 85 },
+          { name: "أمن المعلومات", level: 85 },
+          { name: "إدارة المشاريع", level: 80 }
+        ],
+        experienceTitle: "الخبرات العملية",
+        experience: [
+          {
+            date: "2022 - الى الان",
+            title: "باحث مساعد",
+            description: "إجراء بحوث في مجال الذكاء الاصطناعي والتعلم العميق، نشر أوراق علمية في مجلات محكمة."
+          },
+          {
+            date: "2019 - الى الان",
+            title: "مطور برمجيات - العتبة العباسية المقدسة",
+            description: "تطوير أنظمة إدارة قواعد البيانات وتطبيقات الويب وتطبيقات سطح المكتب باستخدام أحدث التقنيات."
+          },
+          {
+            date: "2018 - 2019",
+            title: "مهندس شبكات - مشروع مجاري كربلاء",
+            description: "تركيب وصيانة شبكات الحاسوب وحل مشكلات الاتصال."
+          }
+        ],
+        researchTitle: "الأبحاث والمنشورات",
+        researchList: [
+          {
+            title: "Enhancing Cold Cases Forensic Identification with DCGAN-based Personal Image Reconstruction",
+            journal: "Baghdad Science Journal: Vol. 22: Iss. 2, Article 29.",
+            year: "2025",
+            links: [
+              { type: "DOI", url: "https://doi.org/10.21123/bsj.2024.10896" },
+              { type: "PDF", url: "Enhancing.pdf" }
+            ]
+          },
+          {
+            title: " Revitalizing Cold Cases Inquiries Through Deep Convolutional Generative Adversarial Networks (DCGAN) for Human Face Synthesis: A Survey ",
+            journal: "IEEE Access",
+            year: "2025",
+            links: [
+              { type: "PDF", url: "RevitalizingColdCases.pdf"  }
+            ]
+          }
+        ],
+        contactTitle: "للتواصل",
+        projectsTitle: "أهم المشاريع",
+        projects: [
+          {
+            title: "نظام اعادة بناء الصور الجنائية ",
+            description: "نظام متكامل لاعادة بناء الصور الجنائية من خلال الذكاء الاصطناعي.",
+            links: [
+              { text: "عرض المشروع", url: "https://github.com/HaSSanSa95/ColdCases-By-Using-DCGAN" },
+              { text: "الكود المصدري", url: "https://github.com/HaSSanSa95/ColdCases-By-Using-DCGAN" }
+            ]
+          },
+          {
+            title: "نظام إدارة الموظفين",
+            description: "نظام لإدارة حضور الموظفين باستخدام جهاز البصمة.",
+            links: [
+              { text: "عرض المشروع", url: "https://github.com/HaSSanSa95/AlnibrasApplication" },
+              { text: "الكود المصدري", url: "https://github.com/HaSSanSa95/AlnibrasApplication" }
+            ]
+          },
+          {
+            title: "نظام شؤون الطلبة",
+            description: "نظام لإدارة بيانات الطلاب في الأكاديميات التعليمية.",
+            links: [
+              { text: "عرض المشروع", url: "https://github.com/HaSSanSa95/Student_Affairs" },
+              { text: "الكود المصدري", url: "https://github.com/HaSSanSa95/Student_Affairs" }
+            ]
+          }
+        ],
+        hashtagsTitle: "#هاشتاغات",
+        hashtagsList: [
+          "#الذكاء_الاصطناعي",
+          "#تحليل_البيانات",
+          "#الأمن_السيبراني",
+          "#تطوير_البرمجيات",
+          "#تعلم_الآلة"
+        ],
+        certificatesTitle: "الشهادات",
+        certificatesList: [
+          { 
+            title: "شهادة الأمن السيبراني من جوجل", 
+            thumbnail: "12Google.png", 
+            file: "PDF/Google_Cer.pdf" 
+          },
+          { 
+            title: "شهادة مدرب TOT", 
+            thumbnail: "tot.png", 
+            file: "PDF/TOT_Cer.pdf" 
+          },
+          { 
+            title: "شهادة تطوير الويب", 
+            thumbnail: "next.png", 
+            file: "PDF/NextJS_cer.pdf" 
+          }
+        ],
+        formName: "الاسم",
+        formEmail: "البريد الإلكتروني",
+        formMessage: "الرسالة",
+        formSubmit: "إرسال الرسالة",
+        downloadCV: "تحميل السيرة الذاتية"
+      },
+      en: {
+        nav: {
+          about: "About",
+          skills: "Skills",
+          experience: "Experience",
+          projects: "Projects",
+          research: "Research",
+          certificates: "Certificates",
+          contact: "Contact"
+        },
+        name: "Hassan Sabah Al-Mutairi",
+        subtitle: "MSc in Information Engineering",
+        aboutTitle: "About Me",
+        aboutText: "Iraqi researcher born in 1996, holding an MSc in Information Engineering (2024) and a Bachelor's in Computer and IT (2018). I have strong experience in software development, artificial intelligence, and data analysis. Published author and peer reviewer for Springer Nature's Soft Computing journal. Holder of international certifications from Google, and others.",
+        skillsTitle: "Skills",
+        skills: [
+          { name: "Databases (SQLServer, NoSQL)", level: 90 },
+          { name: "AI & Machine Learning", level: 85 },
+          { name: "Web Development (JavaScript, PHP)", level: 80 },
+          { name: "Data Analysis", level: 85 },
+          { name: "Information Security", level: 85 },
+          { name: "Project Management", level: 80 }
+        ],
+        experienceTitle: "Work Experience",
+        experience: [
+          {
+            date: "2022 - Present",
+            title: "Research Assistant",
+            description: "Conducted research in AI and deep learning, published papers in peer-reviewed journals."
+          },
+          {
+            date: "2019 - Present",
+            title: "Software Developer - AL-Kafeel Center Company",
+            description: "Developed database management systems and web applications using modern technologies."
+          },
+          {
+            date: "2018 - 2019",
+            title: "Network Engineer - Ministry of Communications",
+            description: "Installed and maintained computer networks, solved connectivity issues."
+          }
+        ],
+        researchTitle: "Research & Publications",
+        researchList: [
+         {
+            title: "Enhancing Cold Cases Forensic Identification with DCGAN-based Personal Image Reconstruction",
+            journal: "Baghdad Science Journal: Vol. 22: Iss. 2, Article 29.",
+            year: "2025",
+            links: [
+              { type: "DOI", url: "https://doi.org/10.21123/bsj.2024.10896" },
+              { type: "PDF", url: "Enhancing.pdf" }
+            ]
+          },
+          {
+            title: " Revitalizing Cold Cases Inquiries Through Deep Convolutional Generative Adversarial Networks (DCGAN) for Human Face Synthesis: A Survey ",
+            journal: "IEEE Access",
+            year: "2025",
+            links: [
+              { type: "PDF", url: "RevitalizingColdCases.pdf"  }
+            ]
+          }
+        ],
+        contactTitle: "Contact",
+        projectsTitle: "Key Projects",
+        projects: [
+          {
+            title: "Forensic Image Reconstruction System",
+            description: "Forensic Image Reconstruction System by AI.",
+            links: [
+              { text: "View Project", url: "https://github.com/HaSSanSa95/ColdCases-By-Using-DCGAN" },
+              { text: "Source Code", url: "https://github.com/HaSSanSa95/ColdCases-By-Using-DCGAN" }
+            ]
+          },
+          {
+            title: "Employee Management System",
+            description: "System for managing employee attendance using fingerprint devices.",
+            links: [
+              { text: "View Project", url: "https://github.com/HaSSanSa95/AlnibrasApplication" },
+              { text: "Source Code", url: "https://github.com/HaSSanSa95/AlnibrasApplication" }
+            ]
+          },
+          {
+            title: "Student Affairs System",
+            description: "System for managing student data in educational academies.",
+            links: [
+              { text: "View Project", url: "https://github.com/HaSSanSa95/Student_Affairs" },
+              { text: "Source Code", url: "https://github.com/HaSSanSa95/Student_Affairs" }
+            ]
+          }
+        ],
+        hashtagsTitle: "#Hashtags",
+        hashtagsList: [
+          "#ArtificialIntelligence",
+          "#DataAnalysis",
+          "#Cybersecurity",
+          "#SoftwareDevelopment",
+          "#MachineLearning"
+        ],
+        certificatesTitle: "Certificates",
+        certificatesList: [
+          { 
+            title: "Google Cybersecurity Certificate", 
+            thumbnail: "12Google.png", 
+            file: "PDF/Google_Cer.pdf" 
+          },
+          { 
+            title: "TOT Certificate", 
+            thumbnail: "tot.png",
+            file: "PDF/TOT_Cer.pdf" 
+          },
+          { 
+            title: "Web Development Certificate", 
+            thumbnail: "next.png", 
+            file: "PDF/NextJS_cer.pdf" 
+          }
+        ],
+        formName: "Name",
+        formEmail: "Email",
+        formMessage: "Message",
+        formSubmit: "Send Message",
+        downloadCV: "Download CV"
+      }
+    };
+
+    // تأثير الكتابة على الاسم
+    function typeWriterEffect(id, text, callback) {
+      const element = document.getElementById(id);
+      if (!element || element.textContent === text) {
+        if (callback) callback();
+        return;
+      }
+
+      element.textContent = "";
+      let i = 0;
+      const speed = 30;
+      
+      function type() {
+        if (i < text.length) {
+          element.textContent += text.charAt(i);
+          i++;
+          requestAnimationFrame(type);
+        } else if (callback) {
+          callback();
+        }
+      }
+      
+      type();
+    }
+
+    // عرض الأبحاث
+    function displayResearch(researchList) {
+      const container = document.getElementById('research-list');
+      container.innerHTML = '';
+
+      researchList.forEach(research => {
+        const item = document.createElement('div');
+        item.className = 'research-item';
+        
+        item.innerHTML = `
+          <h3 class="research-title">${research.title}</h3>
+          <p class="research-journal">${research.journal} - ${research.year}</p>
+          <div class="research-links">
+            ${research.links.map(link => 
+              `<a href="${link.url}" target="_blank" class="research-link">
+                ${link.type} <i class="fas fa-external-link-alt"></i>
+              </a>`
+            ).join('')}
+          </div>
+        `;
+        
+        container.appendChild(item);
+      });
+    }
+
+    // تعيين اللغة
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+      // أزرار اللغة النشطة
+      document.getElementById("btn-ar").classList.toggle("active", lang === "ar");
+      document.getElementById("btn-en").classList.toggle("active", lang === "en");
+
+      const t = translations[lang];
+
+      // تأثير الكتابة على الاسم
+      typeWriterEffect("name", t.name, () => {
+        // تحديث المحتوى
+        document.getElementById("subtitle").textContent = t.subtitle;
+        document.getElementById("about-title").textContent = t.aboutTitle;
+        document.getElementById("about-text").textContent = t.aboutText;
+        document.getElementById("skills-title").textContent = t.skillsTitle;
+        document.getElementById("experience-title").textContent = t.experienceTitle;
+        document.getElementById("projects-title").textContent = t.projectsTitle;
+        document.getElementById("research-title").textContent = t.researchTitle;
+        document.getElementById("hashtags-title").textContent = t.hashtagsTitle;
+        document.getElementById("certificates-title").textContent = t.certificatesTitle;
+        document.getElementById("contact-title").textContent = t.contactTitle;
+
+        // تحديث حقول النموذج
+        document.querySelector('label[for="name"]').textContent = t.formName;
+        document.querySelector('label[for="email"]').textContent = t.formEmail;
+        document.querySelector('label[for="message"]').textContent = t.formMessage;
+        document.querySelector('#contact-form button[type="submit"]').textContent = t.formSubmit;
+        document.querySelector('.btn-download').innerHTML = `<i class="fas fa-download"></i> ${t.downloadCV}`;
+
+        // تحديث عناصر التنقل
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          el.textContent = t.nav[key];
+        });
+
+        // تحديث قائمة المهارات
+        const skillsList = document.getElementById("skills-list");
+        skillsList.innerHTML = "";
+        t.skills.forEach(skill => {
+          const skillItem = document.createElement("div");
+          skillItem.className = "skill-item";
+          
+          const skillName = document.createElement("div");
+          skillName.className = "skill-name";
+          skillName.innerHTML = `<span>${skill.name}</span><span>${skill.level}%</span>`;
+          
+          const progressBar = document.createElement("div");
+          progressBar.className = "progress-bar";
+          
+          const progress = document.createElement("div");
+          progress.className = "progress";
+          progress.style.width = `${skill.level}%`;
+          
+          progressBar.appendChild(progress);
+          skillItem.appendChild(skillName);
+          skillItem.appendChild(progressBar);
+          skillsList.appendChild(skillItem);
+        });
+
+        // تحديث الخبرات العملية
+        const experienceList = document.getElementById("experience-list");
+        experienceList.innerHTML = "";
+        t.experience.forEach(exp => {
+          const item = document.createElement("div");
+          item.className = "timeline-item";
+          
+          const date = document.createElement("div");
+          date.className = "timeline-date";
+          date.textContent = exp.date;
+          
+          const title = document.createElement("h3");
+          title.className = "timeline-title";
+          title.textContent = exp.title;
+          
+          const desc = document.createElement("p");
+          desc.textContent = exp.description;
+          
+          item.appendChild(date);
+          item.appendChild(title);
+          item.appendChild(desc);
+          experienceList.appendChild(item);
+        });
+
+        // تحديث المشاريع
+        const projectsList = document.getElementById("projects-list");
+        projectsList.innerHTML = "";
+        t.projects.forEach(project => {
+          const projectCard = document.createElement("div");
+          projectCard.className = "project-card";
+          
+          const img = document.createElement("img");
+          img.src = "project-thumbnail.jpg";
+          img.alt = project.title;
+          img.className = "project-img";
+          img.loading = "lazy";
+          
+          const content = document.createElement("div");
+          content.className = "project-content";
+          
+          const title = document.createElement("h3");
+          title.className = "project-title";
+          title.textContent = project.title;
+          
+          const desc = document.createElement("p");
+          desc.textContent = project.description;
+          
+          const links = document.createElement("div");
+          links.className = "project-links";
+          
+          project.links.forEach(link => {
+            const a = document.createElement("a");
+            a.href = link.url;
+            a.target = "_blank";
+            a.textContent = link.text;
+            links.appendChild(a);
+          });
+          
+          content.appendChild(title);
+          content.appendChild(desc);
+          content.appendChild(links);
+          projectCard.appendChild(img);
+          projectCard.appendChild(content);
+          projectsList.appendChild(projectCard);
+        });
+
+        // تحديث الهاشتاغات
+        const hashtagsContainer = document.getElementById("hashtags-container");
+        hashtagsContainer.innerHTML = "";
+        t.hashtagsList.forEach(tag => {
+          const span = document.createElement("span");
+          span.textContent = tag;
+          span.className = "hashtag";
+          hashtagsContainer.appendChild(span);
+        });
+
+        // تحديث الشهادات
+        const certificatesContainer = document.getElementById("certificates-container");
+        certificatesContainer.innerHTML = "";
+        t.certificatesList.forEach(cert => {
+          const certItem = document.createElement("div");
+          certItem.className = "certificate-item";
+          certItem.onclick = () => openModal(cert.file);
+          
+          const img = document.createElement("img");
+          img.src = cert.thumbnail;
+          img.alt = cert.title;
+          img.loading = "lazy";
+          
+          const p = document.createElement("p");
+          p.textContent = cert.title;
+          
+          certItem.appendChild(img);
+          certItem.appendChild(p);
+          certificatesContainer.appendChild(certItem);
+        });
+
+        // عرض الأبحاث
+        displayResearch(t.researchList);
+
+        document.getElementById("content").style.opacity = 1;
+      });
+    }
+
+    // فتح المودال لعرض الشهادة
+    function openModal(pdfUrl) {
+      const modal = document.getElementById("pdf-modal");
+      const pdfViewer = document.getElementById("pdf-viewer");
+      
+      pdfViewer.src = pdfUrl;
+      modal.style.display = "block";
+      
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          closeModal();
+        }
+      }
+    }
+
+    // إغلاق المودال
+    function closeModal() {
+      document.getElementById("pdf-modal").style.display = "none";
+      document.getElementById("pdf-viewer").src = "";
+    }
+
+    // تحميل السيرة الذاتية
+    function downloadCV() {
+      alert("سيتم تحميل السيرة الذاتية قريباً");
+    }
+
+    // إرسال نموذج التواصل
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+      
+      alert("شكراً لتواصلك، سنرد عليك قريباً!");
+      this.reset();
+    });
+
+    // تحديث شريط التنقل عند التمرير
+    window.addEventListener("scroll", function() {
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll(".sticky-nav a");
+      
+      let current = "";
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute("id");
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    // التهيئة الأولية عند تحميل الصفحة
+    window.onload = function() {
+      setLanguage('ar');
+      
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    };
+  </script>
+</body>
+</html>
